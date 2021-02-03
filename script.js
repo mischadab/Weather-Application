@@ -13,20 +13,7 @@ async function searchCity(city){
         var Kelvin = `${data.main.temp}`;
         var celcius = Math.round(Kelvin - 273.15);
         var currentDate = moment().format("l");
-        result.innerHTML = `
-        <div class="card" style="width: 100%;">
-        <h3 class="card-title">${
-          data.name
-        } (${currentDate}) ${`<img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png"/>`}</h3>
-            <ul class="cardUl">
-                <li>Temperature: ${celsius} °C</li>
-                <br>
-                <li>Humidity: ${data.main.humidity}</li>
-                <br>
-                <li>Wind speed: ${data.wind.speed} MPH</li>
-            </ul>
-            </div>
-          </div>`
+        result.innerHTML = ""
     })
 }
 
