@@ -1,3 +1,8 @@
+// take search button into variable (API KEY)
+// function ( input )
+
+
+
 function citySearch(){
     event.preventDefault();
     var cityNames = document.querySelector('#enteredInfo').nodeValue
