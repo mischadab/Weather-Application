@@ -11,5 +11,5 @@ function citySearch(){
 
 function renderSearch(){
     var cityInfo = JSON.parse(localStorage.getItem("info"));
-    document.querySelector("").textContent += 
+    // document.querySelector("").textContent += 
 }
