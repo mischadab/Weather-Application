@@ -15,8 +15,13 @@ async function searchCity(city){
 
  // fetch info based on location entered
     fetch(urlWeather).then(response => response.json())
-    .then(json = console.log (json.name))
-    .catch(err => console.log('Request failed', err));
+    .then(json =>  {console.log (json) 
+    document.getElementById("cityTitle").innerHTML = json.name
+    document.getElementById("temperature").innerHTML = json.main.temp
+    document.getElementById("humidity").innerHTML = json.main.humidity
+    document.getElementById("wind").innerHTML = json.wind.speed
+    })
+    .catch(err => console.log('Request failed', err))
     // .then(function (data) {
     //     var result = document.querySelector("location");
     //     var Kelvin = `${data.main.temp}`;
