@@ -22,17 +22,16 @@ async function searchCity(city){
     document.getElementById("humidity").innerHTML = json.main.humidity
     document.getElementById("wind").innerHTML = json.wind.speed
     document.getElementById("weatherIcon").src = "http://openweathermap.org/img/w/" + json.weather[0].icon + ".png"
+    var lat = json.coord.lat
+    var lon = json.coord.lon
+    forecast(city)
+    uv(lat, lon)
+    
     })
     .catch(err => console.log('Request failed', err))
-    // .then(function (data) {
-    //     var result = document.querySelector("location");
-    //     var Kelvin = `${data.main.temp}`;
-    //     var celcius = Math.round(Kelvin - 273.15);
-    //     var currentDate = moment().format("l");
-    //     result.innerHTML 
-    // })
-    forecast(city)
+
 }
+
 
 function forecast(city){
     // 5 day forecast fetch
@@ -59,18 +58,12 @@ function forecast(city){
     })
 }
 
-// get each card for 5day forecast an id
-// how to get data from json in a fetch call
+// get UV index for daily forecast
+function uv(lat, lon){
+    let uvURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIkey + "&lat=" + lat + "&lon=" + lon;
+    fetch(uvURL).then(response => response.json())
+    .then(json => {console.log(json)
+        document.getElementById("uvin").innerHTML = json.value
+    })
+}
 
-
-
-// function citySearch(){
-//     event.preventDefault();
-//     var cityNames = document.querySelector('#enteredInfo').nodeValue
-//     var storage = localStorage.setItem("info", JSON.stringify(cityNames));
-// }
-
-// function renderSearch(){
-//     var cityInfo = JSON.parse(localStorage.getItem("info"));
-    // document.querySelector("").textContent += 
-// }
