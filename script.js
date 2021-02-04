@@ -1,3 +1,16 @@
+
+// $("#searchButton").on("click", function(){
+//     var enteredCity = $("#cityInput").val();
+//     console.log(enteredCity)
+// })
+
+// grab input from input element on click
+document.getElementById("searchButton").onclick = function() {
+var enteredCity = document.getElementById("cityInput").value
+}
+
+
+
 // search city function
 async function searchCity(city){
     var APIkey = "b13426899baf1ab4f2b674c71d680b79";
@@ -13,12 +26,9 @@ async function searchCity(city){
         var Kelvin = `${data.main.temp}`;
         var celcius = Math.round(Kelvin - 273.15);
         var currentDate = moment().format("l");
-        result.innerHTML = ""
+        result.innerHTML
     })
 }
-
-
-
 
 
 
