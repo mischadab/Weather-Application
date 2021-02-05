@@ -1,17 +1,34 @@
 // grab input from input element on click
 document.getElementById("searchButton").onclick = function() {
 var enteredCity = document.getElementById("cityInput").value
+if (enteredCity){
+    document.getElementById("cityInput").value = ""
+    searchCity(enteredCity)
+}
 // clearing input field
-document.getElementById("cityInput").value = ""
-searchCity(enteredCity)
+
 }
 
 var APIkey = "b13426899baf1ab4f2b674c71d680b79";
 
+function makeList(){
+   var savedCities = JSON.parse(localStorage.getItem("cities"))
+    for (let i=0; i < savedCities.length; i++) {
+        createList(savedCities[i])
+    }
+}
+makeList()
+
 // search city function
 async function searchCity(city){
-    
-    var urlWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIkey}`;
+    var cities = JSON.parse(localStorage.getItem("cities")) || []
+    if (cities.indexOf(city) === -1 ) {
+        cities.push(city)
+        localStorage.setItem("cities", JSON.stringify(cities))
+        createList(city)
+    }
+
+    var urlWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIkey}&units=metric`;
     // var urlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${APIkey}`;
 
  // fetch info based on location entered
@@ -35,9 +52,10 @@ async function searchCity(city){
 
 function forecast(city){
     // 5 day forecast fetch
-    var forecastURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIkey + "&units=imperial";
+    var forecastURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIkey + "&units=metric";
     fetch(forecastURL).then(response => response.json())
     .then(json => {console.log (json)
+        document.getElementById("fiveDay").innerHTML = ""
     for (let i=0; i < json.list.length; i++) {
         if (json.list[i].dt_txt.indexOf("15:00:00") !== -1 ) {
             let col = `
@@ -67,3 +85,14 @@ function uv(lat, lon){
     })
 }
 
+function createList(city) {
+    var cityList = document.getElementById("searchedCities")
+    var list = `<li>${city}</li>`
+    cityList.innerHTML += list
+}
+
+document.getElementById("searchedCities").addEventListener("click", function(event){
+    if (event.target.classList.contain("something")) {
+    searchCity(event.target.textContent)
+    }
+})
