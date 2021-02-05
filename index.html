@@ -33,7 +33,7 @@
         </div>
 
         <!-- cities from search line up here -->
-        <ul id="searchedCities" class="list-group"></ul>
+        <ul id="searchedCities" class="list-group something"></ul>
 
       </div>
 
@@ -42,6 +42,7 @@
         <div class="card" style="width: 100%;">
           <div class="card-body">
             <h5 id="cityTitle" class="card-title"></h5>
+            <img id="weatherIcon" src=""/>
             <p id="temperature" class="card-text">Temperature: </p>
             <p id="humidity" class="card-text">Humidity: </p>
             <p id="wind" class="card-text">Wind Speed:</p>
@@ -51,50 +52,8 @@
         <br>
         <div class="row fiveday">
           <h3>5-Day Forecast</h3>
-          <!-- 5 day forecast card group -->
-          <div class="card-group">
-
-            <div class="card forecast">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Temperature:</p>
-                <p class="card-text">Humidity:</p>
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Temperature:</p>
-                <p class="card-text">Humidity:</p>
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Temperature:</p>
-                <p class="card-text">Humidity:</p>
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Temperature:</p>
-                <p class="card-text">Humidity:</p>
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Temperature:</p>
-                <p class="card-text">Humidity:</p>
-              </div>
-            </div>
-          </div>
-        </div>
+          <!-- 5 day forecast  will be displayed here -->
+          <div class="card-group" id="fiveDay"> </div>
 
        
         <script src="script.js"></script>

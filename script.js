@@ -12,7 +12,7 @@ if (enteredCity){
 var APIkey = "b13426899baf1ab4f2b674c71d680b79";
 
 function makeList(){
-   var savedCities = JSON.parse(localStorage.getItem("cities"))
+   var savedCities = JSON.parse(localStorage.getItem("cities")) || []
     for (let i=0; i < savedCities.length; i++) {
         createList(savedCities[i])
     }
@@ -92,7 +92,7 @@ function createList(city) {
 }
 
 document.getElementById("searchedCities").addEventListener("click", function(event){
-    if (event.target.classList.contain("something")) {
+    if (!event.target.classList.contains("something")) {
     searchCity(event.target.textContent)
     }
 })
